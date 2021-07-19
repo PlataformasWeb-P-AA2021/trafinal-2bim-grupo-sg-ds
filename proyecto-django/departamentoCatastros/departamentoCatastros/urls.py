@@ -22,10 +22,17 @@ from django.contrib.auth import views as auth_views
 from rest_framework import routers
 from administrativo import views
 
-
+router = routers.DefaultRouter()
+router.register(r'users', views.UserViewSet)
+router.register(r'groups', views.GroupViewSet)
+router.register(r'personas', views.PersonasViewSet)
+router.register(r'barrios', views.BarriosViewSet)
+router.register(r'departamentos', views.DepartamentosViewSet)
+router.register(r'casas', views.CasasViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('administrativo.urls')),  
-
+    path('', include('administrativo.urls')), 
+    path('api/', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

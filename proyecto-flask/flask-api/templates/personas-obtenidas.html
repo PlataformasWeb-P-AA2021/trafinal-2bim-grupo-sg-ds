@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Flask-Personas</title>
+  </head>
+  <body>
+    <h2>Personas obtenidas - {{numero_personas}}</h2>
+    {% for e in personas %}
+    <ol>
+      <li><b>Nombre: </b>{{e['nombre']}}</li>
+      <li><b>Apellido: </b>{{e['apellido']}}</li>
+      <li><b>Cedula: </b>{{e['cedula']}}</li>
+      <li><b>Correo electrónico: </b>{{e['correo']}}</li>
+    </ol>
+    <hr>
+    {% endfor%}
+  </body>
+</html>

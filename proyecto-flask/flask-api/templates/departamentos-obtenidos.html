@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Flask-Departamentos</title>
+  </head>
+  <body>
+    <h2>Departamentos obtenidos - {{numero_departamentos}}</h2>
+    {% for e in departamentos %}
+    <ol>
+      <li><b>Nombre del propietario: </b>{{e['propietario']}}</li>
+      <li><b>Dirrecion: </b>{{e['dirreccion']}}</li>
+      <li><b>Barrio: </b>{{e['barrio']}}</li>
+      <li><b>Valor del bien: </b>{{e['valorBien']}}</li>
+      <li><b>Número de cuartos: </b>{{e['numCuartos']}}</li>
+      <li><b>Valor mensual de mantenimiento: </b>{{e['valorMantenimientos']}}</li>
+    </ol>
+    <hr>
+    {% endfor%}
+  </body>
+</html>

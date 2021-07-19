@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Flask-Casas</title>
+  </head>
+  <body>
+    <h2>Casas obtenidas - {{numero_edificios}}</h2>
+    {% for e in casas %}
+    <ol>
+      <li><b>Nombre del propietario: </b>{{e['propietario']}}</li>
+      <li><b>Dirrecion: </b>{{e['direccion']}}</li>
+      <li><b>Barrio: </b>{{e['barrio']}}</li>
+      <li><b>Valor del bien: </b>{{e['valorBien']}}</li>
+      <li><b>Color del inmueble: </b>{{e['colorInmueble']}}</li>
+      <li><b>Número de cuartos: </b>{{e['numCuartos']}}</li>
+      <li><b>Número de pisos de la casa: </b>{{e['numPisos']}}</li>
+    </ol>
+    <hr>
+    {% endfor%}
+  </body>
+</html>

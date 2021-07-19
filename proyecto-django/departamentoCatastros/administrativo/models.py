@@ -6,7 +6,7 @@ class Barrio(models.Model):
     nombre = models.CharField(max_length=200)
     siglas = models.CharField(max_length=10)
 
-    def _str_(self):
+    def __str__(self):
         return "%s %s" % (
                 self.nombre,
                 self.siglas)
@@ -17,7 +17,7 @@ class Persona(models.Model):
     cedula = models.CharField(max_length=20)
     correo = models.EmailField()
 
-    def _str_(self):
+    def __str__(self):
         return "%s %s %s %s" % (
                 self.nombre,
                 self.apellido,
@@ -51,7 +51,7 @@ class Departamento(models.Model):
     numCuartos = models.IntegerField()
     valorMantenimiento = models.DecimalField(max_digits=10, decimal_places=2)   
 
-    def _str_(self):
+    def __str__(self):
         return "%s %s %s %.2f %d %.2f" % (
                 self.propietario,
                 self.dirrecion,
