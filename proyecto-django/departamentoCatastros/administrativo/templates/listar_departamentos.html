@@ -1,0 +1,60 @@
+{% extends "master.html" %}
+
+{% block content %}
+<div class="row justify-content-around">
+    <div class="col-8">
+        <div class="card text-center">
+          <div class="card-header">
+            Administración Municipal
+          </div>
+          <div class="card-body">
+            <div class="row justify-content-around">
+              
+              <div class="col-4">
+                <a href="{% url 'crear_departamento' %}" class="btn btn-secondary" role="button"
+                  aria-pressed="true">Agregar Departamento</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <div class="container">
+    <table id="tabla_datos" class="table table-striped table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>Propietario</th>
+          <th>Dirección</th>
+          <th>Barrio</th>
+          <th>Valor del Bien</th>
+          <th>Número de Cuartos</th>
+          <th>Valor mensual Mantenimiento</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      {% for d in departamentos %}
+      <tr>
+        <td> {{d.propietario.nombre}}</td>
+        <td> {{d.direccion}}</td>
+        <td> {{d.barrio.nombre}}</td>
+        <td> {{d.valorBien}}</td>
+        <td> {{d.numCuartos}}</td>
+        <td> {{d.valorMantenimiento}}</td>
+        <td>
+          <div class="row justify-content-center ">
+            <a href="{% url 'obtener_departamento' d.id %}" class="btn btn-info" role="button" aria-pressed="true">Ver</a><br>
+            <a href="{% url 'editar_departamento' d.id %}" class="btn btn-warning" role="button" aria-pressed="true">Editar</a>
+            <a href="{% url 'eliminar_departamento' d.id %}" class="btn btn-danger" role="button" aria-pressed="true"
+              onclick="return confirm('¿Está seguro de la eliminación?')">Eliminar</a>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#tabla_datos').DataTable();
+    });
+  </script>
+  
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "master.html" %}
+
+{% block content %}
+<div class="row justify-content-around">
+  <div class="col-8">
+    <div class="card text-center">
+      <div class="card-header">
+        Administración Municipal
+      </div>
+      <div class="card-body">
+        <div class="row justify-content-around">
+          <div class="col-4">
+            <a href="{% url 'crear_casa' %}" class="btn btn-secondary" role="button" aria-pressed="true">Agregar Casa</a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <table id="tabla_datos" class="table table-striped table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>Propietario</th>
+          <th>Dirección</th>
+          <th>Barrio</th>
+          <th>Valor del Bien</th>
+          <th>Color Inmueble</th>
+          <th>Número de Cuartos</th>
+          <th>Número de Pisos</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      {% for c in casas %}
+      <tr>
+        <td> {{c.propietario.nombre}}</td>
+        <td> {{c.direccion}}</td>
+        <td> {{c.barrio.nombre}}</td>
+        <td> {{c.valorBien}}</td>
+        <td> {{c.colorInmueble}}</td>
+        <td> {{c.numCuartos}}</td>
+        <td> {{c.numPisos}}</td>
+        <td>
+          <div class="row justify-content-center ">
+            <a href="{% url 'obtener_casa' c.id %}" class="btn btn-info" role="button" aria-pressed="true">Ver</a><br>
+            <a href="{% url 'editar_casa' c.id %}" class="btn btn-warning" role="button" aria-pressed="true">Editar</a>
+            <a href="{% url 'eliminar_casa' c.id %}" class="btn btn-danger" role="button" aria-pressed="true"
+              onclick="return confirm('¿Está seguro de la eliminación?')">Eliminar</a>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#tabla_datos').DataTable();
+    });
+  </script>
+  
+{% endblock %}

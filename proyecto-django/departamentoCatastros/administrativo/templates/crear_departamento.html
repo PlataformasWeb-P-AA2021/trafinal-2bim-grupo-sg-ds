@@ -1,0 +1,66 @@
+{% extends "master.html" %}
+
+{% block content %}
+
+<div class="container">
+  <h2>Agregar Departamento</h2>
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class='wrapper-dos-columnas'>
+      <div class='row'>
+        <div class='column'>
+          <div class='izquierda-column'>
+            <br>
+            <div class="fieldWrapper">
+              {{ formulario.propietario.errors }}
+              <label for="{{ formulario.propietario.id_for_label }}">Ingrese el propietario del edificio: </label>
+              {{ formulario.propietario }}
+            </div>
+            <br>
+            <br>
+            {{ formulario.non_field_errors }}
+            <div class="fieldWrapper">
+              {{ formulario.direccion.errors }}
+              <label for="{{ formulario.direccion.id_for_label }}">Ingrese la direccion del edificio: </label>
+              {{ formulario.direccion }}
+            </div>
+            <br>
+            <br>
+          </div>
+        </div>
+        <div class='column'>
+          <div class='derecha-column'>
+            <br>
+            <div class="fieldWrapper">
+              {{ formulario.barrio.errors }}
+              <label for="{{ formulario.barrio.id_for_label }}">Ingrese la barrio: </label>
+              {{ formulario.barrio }}
+            </div>
+            <br>
+            <br>
+            <div class="fieldWrapper">
+              {{ formulario.valorBien.errors }}
+              <label for="{{ formulario.valorBien.id_for_label }}">Elija el valorBien correspondiente: </label>
+              {{ formulario.valorBien}}
+            </div>           
+            <br>
+            <div class="fieldWrapper">
+              {{ formulario.numCuartos.errors }}
+              <label for="{{ formulario.numCuartos.id_for_label }}">Elija el numCuartos correspondiente: </label>
+              {{ formulario.numCuartos}}
+            </div>
+            <br>
+            <div class="fieldWrapper">
+              {{ formulario.valorMantenimiento.errors }}
+              <label for="{{ formulario.valorMantenimiento.id_for_label }}">Elija el valorMantenimiento correspondiente: </label>
+              {{ formulario.valorMantenimiento}}
+            </div>
+          </div>
+          <br>
+          <br>
+          <div><input type='submit' value='Agregar' /></div>
+        </div>
+      </div>
+  </form>
+</div>
+{% endblock %}

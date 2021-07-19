@@ -1,0 +1,14 @@
+{% extends "master.html" %}
+
+{% block content %}
+<div class="container">
+    <h3>Datos deldepartamento</h3>
+    <p><b>Nombre del propietario: </b>{{departamento.propietario.nombre}}</p>
+    <p><b>Dirección: </b>{{departamento.direccion}}</p>
+    <p><b>Barrio: </b>{{departamento.barrio.nombre}}</p>
+    <p><b>Valor del bien: </b>{{departamento.valorBien}}</p>   
+    <p><b>Número de cuartos: </b>{{departamento.valorBien}}</p>   
+    <p><b>valor mensual del mantenimiento: </b>{{departamento.numCuartos}}</p>   
+    <br/>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "master.html" %}
+
+{% block content %}
+<div class="container">
+    <h3>Datos de la Casa</h3>
+    <p><b>Nombre del propietario: </b>{{casa.propietario.nombre}}</p>
+    <p><b>Dirección: </b>{{casa.direccion}}</p>
+    <p><b>Barrio: </b>{{casa.barrio.nombre}}</p>
+    <p><b>Valor del bien: </b>{{casa.valorBien}}</p>
+    <p><b>Color del Inmueble: </b>{{casa.colorInmueble}}</p>
+    <p><b>Número de Cuartos: </b>{{casa.numCuartos}}</p>
+    <p><b>Número de Pisos: </b>{{casa.numPisos}}</p>
+    <br/>
+</div>
+{% endblock %}
