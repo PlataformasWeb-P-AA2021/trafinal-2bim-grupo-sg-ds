@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'db_catastros',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
         'PORT': ''
     }
 }
