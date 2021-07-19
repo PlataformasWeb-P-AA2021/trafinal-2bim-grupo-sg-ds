@@ -113,23 +113,29 @@ def eliminar_departamento(request, id):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 class PersonasViewSet(viewsets.ModelViewSet):
     queryset = Persona.objects.all()
     serializer_class = PersonaSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 class BarriosViewSet(viewsets.ModelViewSet):
     queryset = Barrio.objects.all()
     serializer_class = BarrioSerializer
+    permission_classes = [permissions.IsAuthenticated]
     
 class CasasViewSet(viewsets.ModelViewSet):
     queryset = Casa.objects.all()
     serializer_class = CasaSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 class DepartamentosViewSet(viewsets.ModelViewSet):
     queryset = Departamento.objects.all()
     serializer_class = DepartamentoSerializer
+    permission_classes = [permissions.IsAuthenticated]
