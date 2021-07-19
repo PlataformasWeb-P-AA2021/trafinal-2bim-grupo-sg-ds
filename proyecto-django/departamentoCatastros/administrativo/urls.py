@@ -29,5 +29,9 @@ urlpatterns = [
         path('editar_departamento/<int:id>', views.editar_departamento,
             name='editar_departamento'),
         path('eliminar/departamento/<int:id>', views.eliminar_departamento,
-            name='eliminar_departamento'),       
+            name='eliminar_departamento'),    
+
+        # Urls Login
+        path('saliendo/logout/', views.logout_view, name="logout_view"),
+        path('entrando/login/', views.ingreso, name="login"),
  ]

@@ -23,6 +23,30 @@ from administrativo.serializers import UserSerializer, GroupSerializer, \
 def index(request):    
     return render(request, 'index.html')
 
+# Métodos Login
+
+def ingreso(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request=request, data=request.POST)
+        print(form.errors)
+        if form.is_valid():
+            username = form.data.get("username")
+            raw_password = form.data.get("password")
+            user = authenticate(username=username, password=raw_password)
+            if user is not None:
+                login(request, user)
+                return redirect(index)
+    else:
+        form = AuthenticationForm()
+
+    informacion_template = {'form': form}
+    return render(request, 'registration/login.html', informacion_template)
+
+def logout_view(request):
+    logout(request)
+    messages.info(request, "Has salido del sistema")
+    return redirect(index)
+
 # listar casas y departamentos
 def listar_casas(request):
     casas = Casa.objects.all()    
@@ -53,6 +77,8 @@ def crear_casa(request):
     diccionario = {'formulario': formulario}
     return render(request, 'crear_casa.html', diccionario)
 
+@login_required(login_url='/entrando/login/')
+@permission_required('administrativo.change_casa', login_url="/entrando/login/")
 def editar_casa(request, id):
     casa = Casa.objects.get(pk=id)
     if request.method=='POST':
@@ -67,6 +93,8 @@ def editar_casa(request, id):
 
     return render(request, 'editar_casa.html', diccionario)
 
+@login_required(login_url='/entrando/login/')
+@permission_required('administrativo.delete_casa', login_url="/entrando/login/")
 def eliminar_casa(request, id):
     casa = Casa.objects.get(pk=id)
     casa.delete()
@@ -91,6 +119,9 @@ def crear_departamento(request):
     diccionario = {'formulario': formulario}
     return render(request, 'crear_departamento.html', diccionario)
 
+
+@login_required(login_url='/entrando/login/')
+@permission_required('administrativo.change_departamento', login_url="/entrando/login/")
 def editar_departamento(request, id):
     departamento = Departamento.objects.get(pk=id)
     if request.method=='POST':
@@ -104,6 +135,9 @@ def editar_departamento(request, id):
     diccionario = {'formulario': formulario}
     return render(request, 'editar_departamento.html', diccionario)
 
+
+@login_required(login_url='/entrando/login/')
+@permission_required('administrativo.delete_departamento', login_url="/entrando/login/")
 def eliminar_departamento(request, id):
     departamento = Departamento.objects.get(pk=id)
     departamento.delete()

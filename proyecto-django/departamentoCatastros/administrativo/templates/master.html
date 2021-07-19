@@ -37,16 +37,34 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'listar_departamentos' %}">Administrar Departamentos</a>
               </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout_view' %}">salir</a></li>
+              {% else %}
+              <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Ingresar</a></li>
+              {% endif %}
             </ul>
           </div>
         </nav>
+         <div class="">
+        {% if messages %}
+          <div class="messages">
+            {% for message in messages %}
+            <span{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
         <div class="card mb-3">
           <img src="{% static 'images/banner.jpg' %}" class="card-img-top" alt="...">
         </div>
       </header>
       <section>
         {% block content %}
-        <span>Bienvenidos:</span>
+        {% if user.is_authenticated %}
+          <li> <span class="nombre_usuario"> Bienvenido: {{user.username}} </span></li>
+        {% endif %}
         {% endblock %}
       </section>
     </body>
