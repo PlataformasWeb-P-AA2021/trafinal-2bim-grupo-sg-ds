@@ -1,19 +1,41 @@
-# Trabajo Final - Segundo Bimestre
+# Información general
+Esta página muestra como cargar un proyecto de Django en Gunicorn y Nginx en un sistema operativo Ubuntu(Linux)
 
-## Problemática
-En el municipio de un cantón del Ecuador se necesita generar un pequeño sistema para el departamento de catastros. 
+## Prerequisitos 
+* Python 3.XX instalado
+* PIP-Python
+* Django
+* Proyecto django ya elaborado
 
-## Tecnologías usadas
+# Cargar aplicación en Gunicorn
+## Requisitos
+Se debe tener instalado gunicorn en nuestro SO, para ello se ejecutan los comandos:
+> sudo apt update
+> sudo apt install gunicorn
 
-- Python
-- Flask
-- Django-Rest-Framework
-- Nginx
-- Gunicorn
-- Mysql
+Se debe tener instalado gunicorn como instancia de python para ello ejecutamos
+> pip install gunicorn)
+## Desarollo
+Se debe modificar la variable **ALLOWED_HOSTS**, esta se encuentra en la sub carpeta del proyecto Django, por ejemplo en este caso: *departamamentoCatastros/departamentoCatastros/settings.py*
+Esta variable es una lista de los hosts permitidos, se puede incluir varias direcciones para levantar el servidor, inlcuida la dirrecion IP de nuestro disopositivo, en este caso solo usaremos el servidor por defecto y el servidor 0.0.0.0, quedando de esta forma.
+> ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1"]  
 
-## Pasos Ngnix
-### Instalación Ngnix
+Ahora debemos añadir el directorio de los archivos estaticos a las urls del proyecto, para ello en la ruta *departamamentoCatastros/departamentoCatastros/urls.py* importamos de django dicha funcionalidad desde django con el comando
+> from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+Y añadimos el metodo a la lista de *urlpatterns* directamente o al finalizar la variable con 
+>  urlpatterns += staticfiles_urlpatterns()
+
+Ahora volvemos al directorio principal y desde la consola ejecutamos para recolectar todo el contenido estatico en una carpeta
+> python manage.py collectstatic
+
+Finalmente desde ese directorio podemos ejecutar el comando para levantar el servidor en uno de los hosts que añadimos al *settings.py* anteriormente y en este caso la subcarpeta del proyecto se llama *departamentoCatastros* es por ello que el comando queda de esta forma
+> gunicorn --bind 0.0.0.0:8000 departamentoCatastros.wsgi
+
+
+# Cargar aplicación en Ngnix
+## Requisitos
+Se debe instalar nginx de la siguiente forma
 ```
 1. Antes de instalar Nginx, actualice las listas de paquetes de su servidor.
     sudo apt update
