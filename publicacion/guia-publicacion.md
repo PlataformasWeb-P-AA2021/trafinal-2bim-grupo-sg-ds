@@ -53,11 +53,11 @@ sudo systemctl status nginx
 
 Inserte info
 
-## COnfiguracion servidor Nginx
+## Configuración servidor Nginx
 1) Se debe crear un archivo en el directorio **etc/nginx/sites-available**. AL ingresar se debe requiere permisos de administrador (sudo) y se usa el siguiente comando.
 
 ```
-sudo touch departamentoCatastros
+sudo touch /etc/nginx/sites-available/departamentoCatastros
 ```
 2) Ahora nos debemos dirigir al directorio **etc/nginx/sites-**
 3) En el archivo se puede usar la siguiente estructura
