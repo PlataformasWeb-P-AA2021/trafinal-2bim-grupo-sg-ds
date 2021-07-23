@@ -20,7 +20,6 @@ Se debe modificar la variable **ALLOWED_HOSTS**, esta se encuentra en la sub car
 Esta variable es una lista de los hosts permitidos, se puede incluir varias direcciones para levantar el servidor, inlcuida la dirrecion IP de nuestro disopositivo, en este caso solo usaremos el servidor por defecto y el servidor 0.0.0.0, quedando de esta forma.
 > ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1"]  
 
-<<<<<<< HEAD
 Ahora debemos añadir el directorio de los archivos estaticos a las urls del proyecto, para ello en la ruta *departamamentoCatastros/departamentoCatastros/urls.py* importamos de django dicha funcionalidad desde django con el comando
 > from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
@@ -36,53 +35,32 @@ Finalmente desde ese directorio podemos ejecutar el comando para levantar el ser
 
 # Cargar aplicación en Ngnix
 ## Requisitos
-Se debe instalar nginx de la siguiente forma
-```
-=======
-## Pasos Ngnix
-### Instalación Ngnix
-
->>>>>>> de8c1b64aada4f0b6799ca7955e334eb90906710
-1. Antes de instalar Nginx, actualice las listas de paquetes de su servidor.
+Antes de instalar Nginx, actualice las listas de paquetes del servidor
 ``` 
 sudo apt update    
 ```
-2. Luego instale Nginx ejecutando el comando:
+Luego se instala Nginx ejecutando el comando
 ``` 
 sudo apt install nginx
 ```
-3. Con Nginx instalado correctamente, puede iniciarlo y verificarlo ejecutando:
+Con Nginx instalado correctamente, se puede iniciar y verificar en que estado esta ejecutando el comando
 ``` 
 sudo systemctl start nginx
 sudo systemctl status nginx
 ```
-4. Para verificar la versión de Nginx, ejecute:
-``` 
-sudo dpkg -l nginx
-```
-5. Comience habilitando el firewall en Ubuntu 20.04.
-``` 
-sudo ufw enable
-```
-6. Por ahora, dado que no estamos en un servidor encriptado, solo permitiremos el perfil HTTP de Nginx que permitirá el tráfico en el puerto 80.
-``` 
-sudo ufw allow 'Nginx HTTP'
-```
-7. Luego, vuelva a cargar el firewall para que los cambios persistan.
-``` 
-sudo ufw reload
-```
-8. Ahora verifique el estado del firewall para verificar los perfiles que se han permitido.
-``` 
-sudo ufw status
-```
-### Vincular Gunicorn con Ngnix
-1) Crear un archivo **sites-available** de nginx; la ruta de acceso es: /etc/nginx/sites-available/. Se debe ingresar con permisos de administrador (sudo).
+
+## Enlazamiento entre el servidor Gunicorn y Nginx
+
+Inserte info
+
+## COnfiguracion servidor Nginx
+1) Se debe crear un archivo en el directorio **etc/nginx/sites-available**. AL ingresar se debe requiere permisos de administrador (sudo) y se usa el siguiente comando.
 
 ```
-sudo touch /etc/nginx/sites-available/departamentoCatastros
+sudo touch departamentoCatastros
 ```
-2) En el archivo se puede usar la siguiente estructura
+2) Ahora nos debemos dirigir al directorio **etc/nginx/sites-**
+3) En el archivo se puede usar la siguiente estructura
 ```
 server {
     listen 81;
