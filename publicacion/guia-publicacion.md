@@ -51,7 +51,55 @@ sudo systemctl status nginx
 
 ## Enlazamiento entre el servidor Gunicorn y Nginx
 
-Inserte info
+1) Agregar un servicio en el sistema operativo; mismo que será encargado de levantar el proyecto de django mediante gunicorn. Luego el servicio será usado por nginx.
+
+2) En el directorio **/etc/systemd/system/** agregar un archivo con la siguiente extensión y estructura. Se debe usar **sudo** para acceder y crear el archivo.
+
+2.1. Nombre del archivo **departamentoCatastros.service**.
+2.2. En el archivo agregar la siguiente información
+```
+[Unit]
+# metadatos necesarios
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+# usuario del sistema operativo que ejecutará el proceso
+User=davisalex22
+# el grupo del sistema operativo que permite la comunicación a desde el servidor web-nginx con gunicorn. No se debe cambiar el valor
+Group=www-data
+
+# a través de la variable WorkingDirectory se indica la dirección absoluta del proyecto de Django
+WorkingDirectory=/home/davisalex22/trafinal-2bim-grupo-sg-ds/proyecto-django/departamentoCatastros
+
+# En Environment se indica el path de python
+# Ejemplo 1: /usr/bin/python3.9
+# Ejemplo 2: (Opcional, con el uso de entornos virtuales) /home/usuario/entornos/entorno01/bin
+Environment="PATH=/usr/bin/python3.6"
+
+# Detallar el comando para iniciar el servicio
+ExecStart=/usr/bin/gunicorn --workers 3 --bind unix:application.sock -m 007 departamentoCatastros.wsgi:application
+
+# Donde: aplicacion.sock es el nombre del archivo que se debe crear en el directorio del proyecto; departamentoCatastros el nombre del proye>
+# La expresión /bin/gunicorn no se debe modificar.
+
+[Install]
+# esta sección será usada para indicar que el servicio puede empezar cuando se inicie el sistema operativo. Se sugiere no cambiar el valor d>
+WantedBy=multi-user.target
+```
+3) Iniciar y habilitar el proceso a través de los siguiente comandos:
+```
+sudo systemctl start departamentoCatastros
+sudo systemctl enable departamentoCatastros
+```
+4) Verificar que todo esté en orden con el servicio, usar el comando:
+```
+sudo systemctl status departamentoCatastros
+```
+
+4) Este paso es importante, se debe verificar que el archivo .sock esté creado en el directorio del proyecto.
+Ejemplo:
+![https://github.com/PlataformasWeb-P-AA2021/trafinal-2bim-grupo-sg-ds/blob/main/publicacion/img/directorio.PNG]
 
 ## Configuración servidor Nginx
 1) Se debe crear un archivo en el directorio **etc/nginx/sites-available**. AL ingresar se debe requiere permisos de administrador (sudo) y se usa el siguiente comando.
@@ -88,6 +136,8 @@ sudo ln -s /etc/nginx/sites-available/departamentoCatastros /etc/nginx/sites-ena
 sudo service nginx start
 sudo service nginx status
 ```
+![](https://github.com/PlataformasWeb-P-AA2021/trafinal-2bim-grupo-sg-ds/blob/main/publicacion/img/funcionamientoNginx.PNG) 
+
 5) En un navegador con las siguientes direcciones se debe deplegar el proyecto a través de nginx:
 * http://localhost:81
 * http://0.0.0.0:81
