@@ -33,9 +33,9 @@ class DepartamentoForm(ModelForm):
         model = Departamento
         fields = ['propietario', 'direccion', 'barrio', 'valorBien', 'numCuartos', 'valorMantenimiento']
         labels = {
-            'propietario': _('Ingrese el nombre del propietario'),
-            'direccion': _('Ingrese la direccion'),
-            'barrio': _('Ingrese el barrio al que pertenece'),
+            'propietario': _('Seleccione el nombre del propietario'),
+            'direccion': _('Ingrese la dirección'),
+            'barrio': _('Seleccione el barrio al que pertenece'),
             'valorBien': _('Ingrese el valor del bien'),
             'numCuartos': _('Ingrese el numero de cuartos'),
             'valorMantenimiento': _('Ingrese el valor mensual del mantenimiento'),
@@ -48,9 +48,9 @@ class CasaForm(ModelForm):
         model = Casa
         fields = ['propietario', 'direccion', 'barrio', 'colorInmueble', 'valorBien', 'numCuartos', 'numPisos']
         labels = {
-            'propietario': _('Ingrese el nombre del propietario'),
+            'propietario': _('Seleccione el nombre del propietario'),
             'direccion': _('Ingrese la direccion'),
-            'barrio': _('Ingrese el barrio al que pertenece'),
+            'barrio': _('Seleccione el barrio al que pertenece'),
             'valorBien': _('Ingrese el valor del bien'),
             'colorInmueble': _('Ingrese el color del inmueble'),
             'numCuartos': _('Ingrese el numero de cuartos'),
