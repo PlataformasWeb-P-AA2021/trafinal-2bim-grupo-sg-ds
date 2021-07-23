@@ -1,15 +1,23 @@
 {% extends "master.html" %}
 
 {% block content %}
-<div class="container">
-    <h3>Datos de la Casa</h3>
-    <p><b>Nombre del propietario: </b>{{casa.propietario.nombre}}</p>
-    <p><b>Dirección: </b>{{casa.direccion}}</p>
-    <p><b>Barrio: </b>{{casa.barrio.nombre}}</p>
-    <p><b>Valor del bien: </b>{{casa.valorBien}}</p>
-    <p><b>Color del Inmueble: </b>{{casa.colorInmueble}}</p>
-    <p><b>Número de Cuartos: </b>{{casa.numCuartos}}</p>
-    <p><b>Número de Pisos: </b>{{casa.numPisos}}</p>
-    <br/>
-</div>
+  <div class="row justify-content-around">
+    <div class="col-8">
+      <div class="card">
+        <div class="card-header text-center">Datos de la casa</div>
+        <div class="card-body">
+            <div class="container">
+                <p><b>Nombre del propietario: </b>{{casa.propietario.nombre}}</p>
+                <p><b>Dirección: </b>{{casa.direccion}}</p>
+                <p><b>Barrio: </b>{{casa.barrio.nombre}}</p>
+                <p><b>Valor del bien: </b>{{casa.valorBien}}</p>
+                <p><b>Color del Inmueble: </b>{{casa.colorInmueble}}</p>
+                <p><b>Número de Cuartos: </b>{{casa.numCuartos}}</p>
+                <p><b>Número de Pisos: </b>{{casa.numPisos}}</p>
+                <br/>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
