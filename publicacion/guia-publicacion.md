@@ -96,7 +96,7 @@ sudo systemctl enable departamentoCatastros
 sudo systemctl status departamentoCatastros
 ```
 
-4) Este paso es importante, se debe verificar que el archivo .sock esté creado en el directorio del proyecto.
+5) Este paso es importante, se debe verificar que el archivo .sock esté creado en el directorio del proyecto.
 Ejemplo:
 ![](https://github.com/PlataformasWeb-P-AA2021/trafinal-2bim-grupo-sg-ds/blob/main/publicacion/img/directorio.PNG) 
 
