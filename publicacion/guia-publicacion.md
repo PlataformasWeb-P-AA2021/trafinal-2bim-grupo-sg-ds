@@ -54,9 +54,8 @@ sudo systemctl status nginx
 1) Agregar un servicio en el sistema operativo; mismo que será encargado de levantar el proyecto de django mediante gunicorn. Luego el servicio será usado por nginx.
 
 2) En el directorio **/etc/systemd/system/** agregar un archivo con la siguiente extensión y estructura. Se debe usar **sudo** para acceder y crear el archivo.
+* Nombre del archivo **departamentoCatastros.service** (En el archivo agregar la siguiente información).
 
-2.1. Nombre del archivo **departamentoCatastros.service**.
-2.2. En el archivo agregar la siguiente información
 ```
 [Unit]
 # metadatos necesarios
