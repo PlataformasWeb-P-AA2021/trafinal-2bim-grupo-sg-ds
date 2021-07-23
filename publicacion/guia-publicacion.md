@@ -14,11 +14,9 @@ En el municipio de un cantón del Ecuador se necesita generar un pequeño sistem
 
 ## Pasos Ngnix
 ### Instalación Ngnix
-```
+
 1. Antes de instalar Nginx, actualice las listas de paquetes de su servidor.
-``` 
-    sudo apt update
-    
+``` sudo apt update    
 ```
 2. Luego instale Nginx ejecutando el comando:
 ``` sudo apt install nginx
