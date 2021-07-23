@@ -92,3 +92,4 @@ sudo service nginx status
 * http://localhost:81
 * http://0.0.0.0:81
 * http://127.0.0.0:81
+![](https://github.com/PlataformasWeb-P-AA2021/trafinal-2bim-grupo-sg-ds/blob/main/publicacion/img/paginaDesplegada.PNG) 
