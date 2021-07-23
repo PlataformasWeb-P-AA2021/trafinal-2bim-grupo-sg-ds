@@ -99,7 +99,8 @@ sudo systemctl status departamentoCatastros
 
 4) Este paso es importante, se debe verificar que el archivo .sock esté creado en el directorio del proyecto.
 Ejemplo:
-![https://github.com/PlataformasWeb-P-AA2021/trafinal-2bim-grupo-sg-ds/blob/main/publicacion/img/directorio.PNG]
+![](https://github.com/PlataformasWeb-P-AA2021/trafinal-2bim-grupo-sg-ds/blob/main/publicacion/img/directorio.PNG) 
+
 
 ## Configuración servidor Nginx
 1) Se debe crear un archivo en el directorio **etc/nginx/sites-available**. AL ingresar se debe requiere permisos de administrador (sudo) y se usa el siguiente comando.
